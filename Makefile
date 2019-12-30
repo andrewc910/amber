@@ -1,42 +1,42 @@
 PREFIX=/usr/local
 INSTALL_DIR=$(PREFIX)/bin
-AMBER_SYSTEM=$(INSTALL_DIR)/amber
+OPAL_SYSTEM=$(INSTALL_DIR)/opal
 
 OUT_DIR=$(CURDIR)/bin
-AMBER=$(OUT_DIR)/amber
-AMBER_SOURCES=$(shell find src/ -type f -name '*.cr')
+OPAL=$(OUT_DIR)/opal
+OPAL_SOURCES=$(shell find src/ -type f -name '*.cr')
 
 all: build
 
-build: lib $(AMBER)
+build: lib $(OPAL)
 
 lib:
 	@shards install --production
 
-$(AMBER): $(AMBER_SOURCES) | $(OUT_DIR)
-	@echo "Building amber in $@"
+$(OPAL): $(OPAL_SOURCES) | $(OUT_DIR)
+	@echo "Building opal in $@"
 	@crystal build -o $@ src/amber/cli.cr -p --no-debug
 
 $(OUT_DIR) $(INSTALL_DIR):
 	 @mkdir -p $@
 
 run:
-	$(AMBER)
+	$(OPAL)
 
 install: build | $(INSTALL_DIR)
-	@rm -f $(AMBER_SYSTEM)
-	@cp $(AMBER) $(AMBER_SYSTEM)
+	@rm -f $(OPAL_SYSTEM)
+	@cp $(OPAL) $(OPAL_SYSTEM)
 
 link: build | $(INSTALL_DIR)
-	@echo "Symlinking $(AMBER) to $(AMBER_SYSTEM)"
-	@ln -s $(AMBER) $(AMBER_SYSTEM)
+	@echo "Symlinking $(OPAL) to $(OPAL_SYSTEM)"
+	@ln -s $(OPAL) $(OPAL_SYSTEM)
 
 force_link: build | $(INSTALL_DIR)
-	@echo "Symlinking $(AMBER) to $(AMBER_SYSTEM)"
-	@ln -sf $(AMBER) $(AMBER_SYSTEM)
+	@echo "Symlinking $(OPAL) to $(OPAL_SYSTEM)"
+	@ln -sf $(OPAL) $(OPAL_SYSTEM)
 
 clean:
-	rm -rf $(AMBER)
+	rm -rf $(OPAL)
 
 distclean:
-	rm -rf $(AMBER) .crystal .shards libs lib
+	rm -rf $(OPAL) .crystal .shards libs lib

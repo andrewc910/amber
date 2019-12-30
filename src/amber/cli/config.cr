@@ -31,8 +31,8 @@ module Amber::CLI
     end
 
     YAML.mapping(
-      database: {type: String, default: "pg"},
-      language: {type: String, default: "slang"},
+      database: {type: String, default: "sqlite"},
+      language: {type: String, default: "ecr"},
       model: {type: String, default: "granite"},
       recipe: String | Nil,
       recipe_source: String | Nil,
