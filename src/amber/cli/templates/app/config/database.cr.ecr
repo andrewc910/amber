@@ -1,10 +1,7 @@
-# require "granite/adapter/<%= @database %>"
+require "jennifer_sqlite3_adapter"    # https://imdrasil.github.io/jennifer.cr/docs/getting_started if you would like to change the adapter
 
-# Granite::Connections << Granite::Adapter::<%= @database.capitalize %>.new(name: "<%= @database %>", url: Amber.settings.database_url)
-# Granite.settings.logger = Amber.settings.logger.dup
-# Granite.settings.logger.not_nil!.progname = "Granite"
-require "jennifer_sqlite3_adapter"
-
+# If you change to pg or mysql, uncomment the line below and comment out the Jennifer::Config block
+# Jennifer::Config.read("./database.yml", Amber.env.to_s) # Prefer the yml if you use the pg or mysql adpater
 Jennifer::Config.configure do |conf|
   conf.adapter = "sqlite3"
   conf.host = "."

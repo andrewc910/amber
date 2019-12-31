@@ -1,0 +1,18 @@
+# defaults : &defaults
+#   host: localhost
+#   adapter: postgres
+#   user: root
+#   password: somepassword
+#   migration_files_path: db/migrations # this is the default location for all migrations
+
+# development:
+#   db: opal_development
+#   <<: *defaults
+
+# test:
+#   db: opal_test
+#   <<: *defaults
+
+# production:
+#   db: opal_production
+#   <<: *defaults
