@@ -1,13 +1,10 @@
-class <%= class_name %> < ApplicationModel
+class <%= class_name %> < ApplicationRecord
+  mapping(
+<% @fields.reject{|f| f.hidden || f.reference? }.each do |field| -%>
+    <%= field.name %>: { <%= field.cr_type %>? }
+<% end -%>
+  )
 <% @fields.select{|f| f.reference? }.each do |field| %>
   belongs_to :<%= field.name %>
-<% end -%>
-
-  column id : Int64, primary: true
-<% @fields.reject{|f| f.hidden || f.reference? }.each do |field| -%>
-  column <%= field.name %> : <%= field.cr_type %>?
-<% end -%>
-<% if config.database != "sqlite" -%>
-  timestamps
 <% end -%>
 end

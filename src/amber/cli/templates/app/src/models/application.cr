@@ -1,5 +1,4 @@
-class ApplicationModel < Jennifer::Model::Base
-  with_timestamps
+class ApplicationRecord < Jennifer::Model::Base
   with_timestamps
   mapping(
     id: {type: Int32, primary: true},
