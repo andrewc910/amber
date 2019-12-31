@@ -21,9 +21,12 @@ dependencies:
     branch: master
     #version: <%= Amber::VERSION %>
 
-  granite:
-    github: amberframework/granite
-    version: ~> 0.18.0
+  jennifer:
+    github: imdrasil/jennifer.cr
+    version: ~> 0.8.4
+
+  sam:
+    github: imdrasil/sam.cr
 
   quartz_mailer:
     github: amberframework/quartz-mailer
@@ -42,9 +45,9 @@ dependencies:
     github: crystal-lang/crystal-mysql
     version: ~> 0.9.0
 <% when "sqlite" -%>
-  sqlite3:
-    github: crystal-lang/crystal-sqlite3
-    version: ~> 0.14.0
+  jennifer_sqlite3_adapter:
+    github: imdrasil/jennifer_sqlite3_adapter
+    version: 0.2.2
 <% end -%>
 
   citrine-i18n:

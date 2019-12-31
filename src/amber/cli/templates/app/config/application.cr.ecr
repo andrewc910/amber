@@ -7,6 +7,13 @@
 # > We recommend not modifying the order of the requires since the order will
 # affect the behavior of the application.
 
+# Jennifer
+require "jennifer"
+require "./database"
+require "./jennifer"
+require "../db/migrations/*"
+# End of Jennifer
+
 require "amber"
 require "./settings"
 require "./i18n"
@@ -19,3 +26,4 @@ require "./initializers/**"
 require "../src/controllers/application_controller"
 require "../src/controllers/**"
 require "./routes"
+require "../src/models/**"

@@ -15,7 +15,7 @@ module Amber::CLI
     @email : String
     @github_name : String
 
-    def initialize(@name, @database = "pg", @language = "slang", @model = "granite")
+    def initialize(@name, @database = "sqlite", @language = "ecr", @model = "jennifer")
       @db_url = ""
       @wait_for = ""
       @database_name = generate_database_name

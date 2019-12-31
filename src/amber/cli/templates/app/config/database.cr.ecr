@@ -1,5 +1,12 @@
-require "granite/adapter/<%= @database %>"
+# require "granite/adapter/<%= @database %>"
 
-Granite::Connections << Granite::Adapter::<%= @database.capitalize %>.new(name: "<%= @database %>", url: Amber.settings.database_url)
-Granite.settings.logger = Amber.settings.logger.dup
-Granite.settings.logger.not_nil!.progname = "Granite"
+# Granite::Connections << Granite::Adapter::<%= @database.capitalize %>.new(name: "<%= @database %>", url: Amber.settings.database_url)
+# Granite.settings.logger = Amber.settings.logger.dup
+# Granite.settings.logger.not_nil!.progname = "Granite"
+require "jennifer_sqlite3_adapter"
+
+Jennifer::Config.configure do |conf|
+  conf.adapter = "sqlite3"
+  conf.host = "."
+  conf.db = "test.db"
+end

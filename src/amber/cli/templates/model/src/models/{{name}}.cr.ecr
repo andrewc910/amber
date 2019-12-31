@@ -1,6 +1,4 @@
-class <%= class_name %> < Granite::Base
-  connection <%= config.database %>
-  <%= "table #{table_name}" %>
+class <%= class_name %> < ApplicationModel
 <% @fields.select{|f| f.reference? }.each do |field| %>
   belongs_to :<%= field.name %>
 <% end -%>

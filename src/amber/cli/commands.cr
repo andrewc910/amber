@@ -31,7 +31,7 @@ module Amber::CLI
         defaults values shown above in this help message.
 
         Usage:
-        opal new [app_name] -d [pg | mysql | sqlite] -t [slang | ecr] --no-deps
+        opal new [app_name] -d [sqlite | mysql | pg] -t [ecr | pg] --no-deps
       EOS
 
       footer <<-EOS
@@ -45,7 +45,7 @@ module Amber::CLI
       version desc: "prints Opal version"
       help desc: "describe available commands and usages"
       string ["-t", "--template"], desc: "preconfigure for selected template engine", any_of: %w(ecr slang), default: "ecr"
-      string ["-d", "--database"], desc: "preconfigure for selected database.", any_of: %w(pg mysql sqlite), default: "sqlite"
+      string ["-d", "--database"], desc: "preconfigure for selected database.", any_of: %w(sqlite mysql pg), default: "sqlite"
       string ["-r", "--recipe"], desc: "use a named recipe. See documentation at https://docs.opalframework.org/opal/cli/recipes.", default: nil
     end
   end
