@@ -19,6 +19,7 @@ class <%= class_name %>Controller < ApplicationController
 
   def create
     <%= @name %> = <%= class_name %>.new <%= @name %>_params.validate!
+    user.password = params[:password]
     if <%= @name %>.save
       session[:<%= @name %>_id] = <%= @name %>.id
       redirect_to "/", flash: {"success" => "Created <%= class_name %> successfully."}
@@ -46,7 +47,7 @@ class <%= class_name %>Controller < ApplicationController
   private def <%= @name %>_params
     params.validation do
       required :email
-      optional :password
+      required :password
     end
   end
 
